@@ -83,9 +83,7 @@ To watch for changes and automatically do an incremental build when any are dete
 yarn gulp watch
 ```
 
-`yarn gulp` simply runs `gulp`, so you can use that directly if you prefer (run `npm install -g gulp-cli` to install it globally).
-
-The full set of `gulp` tasks can be found on the [Development Environment](../contributing/development-environment.md#terriamap-gulp-tasks) page.
+The full set of `gulp` tasks can be found on the [Development Environment](https://docs.terria.io/guide/contributing/development-environment.md#terriamap-gulp-tasks) page.
 
 ### Running TerriaMap
 
@@ -99,7 +97,7 @@ Then, open a web browser on `http://localhost:3001` to use TerriaMap.
 
 ## Troubleshooting
 
-Checkout the [Problems and Solutions](../contributing/problems-and-solutions.md) page to see if we have them covered.
+Checkout the [Problems and Solutions](https://docs.terria.io/guide/contributing/problems-and-solutions.md) page to see if we have them covered.
 
 Here are some common ones:
 
