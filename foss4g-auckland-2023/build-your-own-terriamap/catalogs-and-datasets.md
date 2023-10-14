@@ -8,6 +8,11 @@ By the end of this section of the workshop, you will have a better understanding
 
 ***nb: A lot of the information in this guide is taken directly from [TerriaJS documentation](https://docs.terria.io/guide/connecting-to-data/) This is the best resource for learning about TerriaJS, and we recommend that you refer to it if you get stuck.***
 
+
+### Cross-Origin Resource Sharing (CORS)
+
+If you are trying to load data from a different domain than your TerriaJS application, you may run into issues with Cross-Origin Resource Sharing (CORS). TerriaJS provides a way to work around these issues using a proxy. For more information on how to set up a proxy, please refer to the [TerriaJS documentation on CORS](https://docs.terria.io/guide/connecting-to-data/cross-origin-resource-sharing/).
+
 The image below shows the catalog for the NationalMap app.
 
 ![Alt text](assets/catalog.png)
@@ -103,6 +108,8 @@ https://gist.githubusercontent.com/sixlighthouses/f5e7be45840d2a57746a0b746d96ef
 ### Add a WebFeatureServiceGroup
 
 Add the LINZ WFS group to the catalog, as a member of our group
+
+https://gist.githubusercontent.com/sixlighthouses/8b15850cc82177764f72b558b351d11d/raw/22068f80ec890c319b27755d6fe376ed06c113f4/foss4g_2.json
 
 ```
  {
