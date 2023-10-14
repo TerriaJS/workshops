@@ -100,6 +100,25 @@ We can configure the basemap in the catalog. The gist below makes use of the [LI
 https://gist.githubusercontent.com/sixlighthouses/f5e7be45840d2a57746a0b746d96ef6a/raw/59de5d0f91aafeb7cd2fbef968bc985022b8a0ce/foss4g_1.json
 ```
 
+### Add a WebFeatureServiceGroup
 
+Add the LINZ WFS group to the catalog, as a member of our group
 
+```
+ {
+    "id": "d1db650c-9372-4eec-8dec-33a0c04744ac",
+    "name": "FOSS4G Group",
+    "type": "group",
+    "members": [
+        {
+        "id": "79f3b210-ad14-4b82-8848-beb7fc1fdc2c",
+        "type": "wfs-group",
+        "name": "LINZ Data",
+        "url": "https://data.linz.govt.nz/services;key=397cc93fe1a7433ebf5aa8a7b6ebdc4a/wfs/?service=WFS&request=GetCapabilities"
+        }
+    ]
+}
+```
+
+![Alt text](assets/LINZ.png)
 
