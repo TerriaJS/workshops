@@ -1,5 +1,11 @@
 # Theming Your Terria Map!
 
+This is the SASS based version - this will only work for "running and building" TerriaMap
+
+Also see
+
+- [Theming (JSON based) - this will work for both pre-built and "running and building" TerriaMap](https://github.com/TerriaJS/workshops/blob/main/foss4g-auckland-2023/build-your-own-terriamap/theming-json-based.md)
+
 ## Intro
 Once you have your local development environment set up, the next step is to modify the look and feel of the map to suit you!
 
