@@ -1,4 +1,4 @@
-# Running Terria locally
+# Building & running Terria locally
 
 This guide is adapted from https://docs.terria.io/guide/customizing/cloning-and-building/
 
