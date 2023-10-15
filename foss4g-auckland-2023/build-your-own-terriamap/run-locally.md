@@ -8,4 +8,6 @@
 - Make sure you have NodeJS installed
 - Run `npx serve`
 - Go to http://localhost:3000/
-- Then you can move on to [Setting up your catalog](https://github.com/TerriaJS/workshops/blob/main/foss4g-auckland-2023/build-your-own-terriamap/catalogs-and-datasets.md)
+- Then you can move on to 
+  - [Setting up your catalog](https://github.com/TerriaJS/workshops/blob/main/foss4g-auckland-2023/build-your-own-terriamap/catalogs-and-datasets.md)
+  - [Theming (JSON based)](https://github.com/TerriaJS/workshops/blob/main/foss4g-auckland-2023/build-your-own-terriamap/theming-json-based.md)
