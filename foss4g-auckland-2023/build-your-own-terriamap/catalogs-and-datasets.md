@@ -129,3 +129,16 @@ https://gist.githubusercontent.com/sixlighthouses/8b15850cc82177764f72b558b351d1
 
 ![Alt text](assets/LINZ.png)
 
+#### Add a layer from a WMS
+
+
+Single layer : water
+https://gist.githubusercontent.com/sixlighthouses/90a87c873c613938714481047e00159c/raw/8fb31d7e3aba625c396d4f5de3e2f1ed0e24b6d5/foss4g_3.json
+
+Two layers : water and slope class
+https://gist.githubusercontent.com/sixlighthouses/90a87c873c613938714481047e00159c/raw/4eff5b4063d5f66c6003ccaf04db0ad1e28b5a0d/foss4g_3.json
+
+
+### Let's add some of your data
+
+Do you have access to some data your wish to load.  Check the documentation and get some help from the Terria team and let's add it to your map.
