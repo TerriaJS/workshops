@@ -107,11 +107,11 @@ You can use [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) to mana
 
 Follow installation instructions [here](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-Then run the following to install NodeJS v16 and use it:
+Then run the following to install NodeJS v20 and use it:
 
 ```bash
-nvm install 16
-nvm use 16
+nvm install 20
+nvm use 20
 ```
 
 ### Install errors on M1/M2 macs

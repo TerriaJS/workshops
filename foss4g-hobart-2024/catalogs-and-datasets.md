@@ -2,20 +2,25 @@
 
 ## Intro
 
-Now that we have our map looking the way we want it to, we need to add some data to it! TerriaJS uses a catalog to store all of the data that is displayed on the map.  The catalog is defined in a JSON file, which is loaded by the application when it starts up.
+TerriaJS uses a catalog to store all of the data that is displayed on the map. The catalog is defined in a JSON file, which is loaded by the application when it starts up.
 
 By the end of this section of the workshop, you will have a better understanding of how catalogs and datasets work in TerriaJS. You will be able to create your own catalogs and add datasets to them. You will also be able to define the properties of each dataset, such as its name, description, and style.
 
-***nb: A lot of the information in this guide is taken directly from [TerriaJS documentation](https://docs.terria.io/guide/connecting-to-data/) This is the best resource for learning about TerriaJS, and we recommend that you refer to it if you get stuck.***
+**_nb: A lot of the information in this guide is taken directly from [TerriaJS documentation](https://docs.terria.io/guide/connecting-to-data/) This is the best resource for learning about TerriaJS, and we recommend that you refer to it if you get stuck._**
 
+TerriaJS has around 1000 different configuration properties, so it can get complicated. We recommend starting with simple data sources (like Web Map Service and GeoJSON) instead of data sources that require extensive configuration (like CKAN and CSW).
+
+There are list of examples for different data types in the [TerriaJS documentation](https://docs.terria.io/guide/connecting-to-data/#getting-started)
+
+The image below shows the catalog for the NationalMap app.
+
+![Alt text](assets/catalog.png)
 
 ### Cross-Origin Resource Sharing (CORS)
 
 If you are trying to load data from a different domain than your TerriaJS application, you may run into issues with Cross-Origin Resource Sharing (CORS). TerriaJS provides a way to work around these issues using a proxy. For more information on how to set up a proxy, please refer to the [TerriaJS documentation on CORS](https://docs.terria.io/guide/connecting-to-data/cross-origin-resource-sharing/).
 
-The image below shows the catalog for the NationalMap app.
-
-![Alt text](assets/catalog.png)
+**Note** if you are using the "pre-built" TerriaMap, you are unable to use the TerriaJS proxy. You will need to setup the full developer environment.
 
 ## Catalogs
 
@@ -31,71 +36,48 @@ Please refer to the docs for more information on [catalog items](https://docs.te
 
 In this workshop, we will be adding catalog items to our catalog. We will define the properties of each catalog item, such as its name, description, and style.
 
-
 ## Catalog basics
 
-As mentioned the we configure the catalog in JSON.  JSON is a data format that is used to store and exchange data. It is a text-based format that is easy to read and write. It is also easy for computers to parse and generate.
+As mentioned the we configure the catalog in JSON. JSON is a data format that is used to store and exchange data. It is a text-based format that is easy to read and write. It is also easy for computers to parse and generate.
 
 Each catalog file:
+
 - must be valid JSON
-    - " not '
-    - no comments
-    - all keys must be quoted { "key": "value" }
-    - case matters "esri-mapServer-group"
+
+  - `"` not `'`
+  - no comments
+  - all keys must be quoted `{ "key": "value" }`
+  - case matters `"esri-mapServer-group"`
 
 - top level items must be group types
 
-
 ### Lets get started
-
 
 A very minimal example
 
-https://gist.githubusercontent.com/sixlighthouses/6f3563aa9827eb671460215e99612876/raw/3439e495b60c849ee46a78faf2b6daf5744b1e2b/foss4g.json
-
-```
+```json
+{
+  "homeCamera": {
+    "north": -34,
+    "east": 178,
+    "south": -49,
+    "west": 166
+  },
+  "catalog": [
     {
-        "homeCamera": {
-            "north": -34,
-            "east": 178,
-            "south": -49,
-            "west": 166
-        },
-        "catalog": [
-            {
-            "id": "d1db650c-9372-4eec-8dec-33a0c04744ac",
-            "name": "FOSS4G Group",
-            "type": "group"
-            }
-        ],
-        "viewerMode": "3dSmooth",
-        "baseMaps": {
-            "defaultBaseMapId": "basemap-positron",
-            "previewBaseMapId": "basemap-positron"
-        }
+      "name": "FOSS4G Group",
+      "type": "group"
     }
+  ],
+  "viewerMode": "3dSmooth",
+  "baseMaps": {
+    "defaultBaseMapId": "basemap-positron",
+    "previewBaseMapId": "basemap-positron"
+  }
+}
 ```
 
-
-If we want to use a public gist, we can use the raw url to load it into our TerriaMap by appending the url to the gist to the end of the url for our TerriaMap.  For example, if we wanted to load the above gist into our TerriaMap, we would use the following url:
-
-```
-http://localhost:3001/#clean&https://gist.githubusercontent.com/sixlighthouses/6f3563aa9827eb671460215e99612876/raw/3439e495b60c849ee46a78faf2b6daf5744b1e2b/foss4g.json
-```
-
-
-the folowing steps are needed to create your gist:
-
-1. Go to the GitHub website and log in to your account.
-2. Click on the "+" icon in the top right corner of the page and select "New gist".
-3. In the "Gist description" field, enter a brief description of your gist.
-4. In the "Filename including extension" field, enter a name for your file. Make sure to use the .json extension.
-5. In the "Add file" section, enter the content of your file.
-6. Add in your TerriaMap config file.
-7. Once you have added all the files you want, select the "Public" option if you want your gist to be visible to everyone, or select "Secret" if you want it to be private.
-8. Click on the "Create secret gist" or "Create public gist" button, depending on your choice.
-
-That's it! Your gist is now created and you can share the URL with others.
+Your catalog can be found in `init/foss4g.json`. You can edit this and then reload the page to see changes.
 
 ### Add a basemap
 
@@ -105,25 +87,27 @@ We can configure the basemap in the catalog. The gist below makes use of the [LI
 https://gist.githubusercontent.com/sixlighthouses/f5e7be45840d2a57746a0b746d96ef6a/raw/59de5d0f91aafeb7cd2fbef968bc985022b8a0ce/foss4g_1.json
 ```
 
+```json
+PUT JSON HERE
+```
+
 ### Add a WebFeatureServiceGroup
 
 Add the LINZ WFS group to the catalog, as a member of our group
 
-https://gist.githubusercontent.com/sixlighthouses/8b15850cc82177764f72b558b351d11d/raw/22068f80ec890c319b27755d6fe376ed06c113f4/foss4g_2.json
-
-```
- {
-    "id": "d1db650c-9372-4eec-8dec-33a0c04744ac",
-    "name": "FOSS4G Group",
-    "type": "group",
-    "members": [
-        {
-        "id": "79f3b210-ad14-4b82-8848-beb7fc1fdc2c",
-        "type": "wfs-group",
-        "name": "LINZ Data",
-        "url": "https://data.linz.govt.nz/services;key=397cc93fe1a7433ebf5aa8a7b6ebdc4a/wfs/?service=WFS&request=GetCapabilities"
-        }
-    ]
+```json
+{
+  "id": "d1db650c-9372-4eec-8dec-33a0c04744ac",
+  "name": "FOSS4G Group",
+  "type": "group",
+  "members": [
+    {
+      "id": "79f3b210-ad14-4b82-8848-beb7fc1fdc2c",
+      "type": "wfs-group",
+      "name": "LINZ Data",
+      "url": "https://data.linz.govt.nz/services;key=397cc93fe1a7433ebf5aa8a7b6ebdc4a/wfs/?service=WFS&request=GetCapabilities"
+    }
+  ]
 }
 ```
 
@@ -131,14 +115,28 @@ https://gist.githubusercontent.com/sixlighthouses/8b15850cc82177764f72b558b351d1
 
 #### Add a layer from a WMS
 
-
 Single layer : water
 https://gist.githubusercontent.com/sixlighthouses/90a87c873c613938714481047e00159c/raw/8fb31d7e3aba625c396d4f5de3e2f1ed0e24b6d5/foss4g_3.json
+
+```json
+PUT JSON HERE
+```
 
 Two layers : water and slope class
 https://gist.githubusercontent.com/sixlighthouses/90a87c873c613938714481047e00159c/raw/4eff5b4063d5f66c6003ccaf04db0ad1e28b5a0d/foss4g_3.json
 
+```json
+PUT JSON HERE
+```
 
 ### Let's add some of your data
 
-Do you have access to some data your wish to load.  Check the documentation and get some help from the Terria team and let's add it to your map.
+Do you have access to some data your wish to load. Check the documentation and get some help from the Terria team and let's add it to your map.
+
+You can get started with different data types [here](https://docs.terria.io/guide/connecting-to-data/)
+
+If you see an interesting dataset on one of our Maps - like NationalMap - let us know and we can share the TerriaJS configuration!
+
+### Advanced options
+
+TerriaJS catalogs have many other configuration options. You can find them in the [TerriaJS Init Source Documentation](...asdfasdf)

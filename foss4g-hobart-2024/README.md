@@ -1,12 +1,19 @@
-## Guides
+# FOSS4G Hobart Workshop
 
-- [Running pre-built TerriaMap](https://github.com/TerriaJS/workshops/blob/main/foss4g-auckland-2023/build-your-own-terriamap/run-locally.md)
-- [Theming (JSON based)](https://github.com/TerriaJS/workshops/blob/main/foss4g-auckland-2023/build-your-own-terriamap/theming-json-based.md)
-- [Setting up your catalog](https://github.com/TerriaJS/workshops/blob/main/foss4g-auckland-2023/build-your-own-terriamap/catalogs-and-datasets.md)
+If you don't have experience building TerriaJS - or with NodeJS packages - we highly recommend following the "Beginner to Terria" guide.
+
+[Link to workshop presentation]()
+
+## Beginner to Terria
+
+- [Setup your (static) TerriaMap](run-locally.md)
+- [Setting up your catalog](catalogs-and-datasets.md)
+- [Theming (JSON based)](theming-json-based.md)
+- [Deploy to GitHub pages](deploy-to-github-pages.md)
 
 ## Advanced
 
 Setup TerriaJS dev environment
 
-- [Running and building TerriaJS (hard)](https://github.com/TerriaJS/workshops/blob/main/foss4g-auckland-2023/build-your-own-terriamap/run-and-build-locally.md)
-- - [Theming (SASS based) - this will **only work for "running and building"** TerriaMap](https://github.com/TerriaJS/workshops/blob/main/foss4g-auckland-2023/build-your-own-terriamap/theming.md)
+- [Setup your full TerriaMap developer environment](run-and-build-locally.md)
+- [Theming (SASS based)](theming.md)
