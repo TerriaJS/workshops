@@ -28,15 +28,11 @@ If you are trying to load data from a different domain than your TerriaJS applic
 
 A catalog is a hierarchical tree structure that defines the datasets (catalog items) that are displayed on the map. Each node in the tree represents a catalog item or a group of catalog items. The catalog is defined in a JSON file, which is loaded by the application when it starts up.
 
-In this workshop, we will be creating a catalog for our map. We will define the catalog items that we want to display on the map and group them together in a logical way.
-
 ## Catalog Items
 
 A catalog item is a collection of data that can be displayed on the map. In TerriaJS, catalog items can be of different types, such as GeoJSON, WMS, or CSV. Each catalog item has a set of properties that define how it is displayed on the map.
 
 Please refer to the docs for more information on [catalog items](https://docs.terria.io/guide/connecting-to-data/catalog-items).
-
-In this workshop, we will be adding catalog items to our catalog. We will define the properties of each catalog item, such as its name, description, and style.
 
 ## Catalog basics
 
@@ -51,11 +47,14 @@ Each catalog file:
   - all keys must be quoted `{ "key": "value" }`
   - case matters `"esri-mapServer-group"`
 
-- top level items must be group types
-
 ### Lets get started
 
-A very minimal example
+A very minimal example - this defines
+
+- a group called "FOSS4G Group" with no members
+- a default basemap of "basemap-positron" - a nice simple light basemap
+- a home camera position framing beautiful Tasmania
+- the default viewer mode to `3dSmooth` - which is Cesium without Terrain (a smooth globe)
 
 ```json
 {
@@ -83,7 +82,7 @@ Your catalog can be found in `init/foss4g.json`. You can edit this and then relo
 
 ### Add a basemap
 
-We can configure the basemap in the catalog. Add the `baseMaps` property to your catalog to get a Tasmanian LIST basemap.
+We can configure the basemap in the catalog. Update the `baseMaps` property in your catalog to get a Tasmanian LIST basemap.
 
 ```json
 {
@@ -115,9 +114,11 @@ We can configure the basemap in the catalog. Add the `baseMaps` property to your
 }
 ```
 
-### Add an ArcGis MapServer layer (ESRI's version of WMS)
+### Add a new dataset!
 
-Add LIST ArcGis MapServer layer to the catalog, as a member of our group
+Here we are going to add an ArcGis MapServer layer (ESRI's version of WMS) from Land Information System Tasmania (LIST). The layer contains the Tasmanian Heritage Register.
+
+Add the "Tasmanian Heritage Register" LIST ArcGis MapServer layer to the catalog, as a member of our "FOSS4G group"
 
 ```json
 {
@@ -133,9 +134,62 @@ Add LIST ArcGis MapServer layer to the catalog, as a member of our group
 }
 ```
 
-![Alt text](assets/LINZ.png)
+### The catalog file with LIST basemap and Tasmanian Heritage Register
 
-### Let's add some of your data
+This is what your catalog should look like now
+
+```json
+{
+  "homeCamera": {
+    "north": -35,
+    "east": 152,
+    "south": -47,
+    "west": 140
+  },
+  "catalog": [
+    {
+      "name": "FOSS4G Group",
+      "type": "group",
+      "members": [
+        {
+          "type": "esri-mapServer",
+          "name": "Tasmanian Heritage Register",
+          "url": "https://services.thelist.tas.gov.au/arcgis/rest/services/HT/HT_Public/MapServer/0"
+        }
+      ]
+    }
+  ],
+  "viewerMode": "3dSmooth",
+  "baseMaps": {
+    "defaultBaseMapId": "list-basemap",
+    "previewBaseMapId": "basemap-positron",
+    "enabledBaseMaps": [
+      "basemap-natural-earth-II",
+      "basemap-black-marble",
+      "basemap-positron",
+      "basemap-darkmatter",
+      "list-basemap"
+    ],
+    "items": [
+      {
+        "image": "public/img/tasmania-basemap-icon.png",
+        "item": {
+          "allowFeaturePicking": false,
+          "id": "list-basemap",
+          "name": "LIST Simple Basemap",
+          "opacity": 1,
+          "type": "esri-mapServer",
+          "url": "https://services.thelist.tas.gov.au/arcgis/rest/services/Basemaps/SimpleBasemap/MapServer/0"
+        }
+      }
+    ]
+  }
+}
+```
+
+---
+
+### Let's add some of your own data!
 
 Do you have access to some data your wish to load. Check the documentation and get some help from the Terria team and let's add it to your map.
 
@@ -164,7 +218,13 @@ These are some of the most common data types you might use:
 
 ### Tabular - CSV
 
-For what CSVs are supported - see [csv-geo-au](https://github.com/NICTA/nationalmap/wiki/csv-geo-au). Tabular data in Terria is very customisable, and can be difficult. We have an "Edit Style" tool to help with this - see [Style Editor in the user guide](https://userguide.terria.io/interactions-functionalities-and-workflows#style-editor) and [this discussion post](https://github.com/TerriaJS/terriajs/discussions/6422#discussioncomment-3176804) on how to use it.
+For what CSVs are supported - see [csv-geo-au](https://github.com/NICTA/nationalmap/wiki/csv-geo-au).
+
+Tabular data in Terria is very customisable, and can be difficult to get working. We have an "Edit Style" tool to help with this - see [Style Editor in the user guide](https://userguide.terria.io/interactions-functionalities-and-workflows#style-editor) and [this discussion post](https://github.com/TerriaJS/terriajs/discussions/6422#discussioncomment-3176804) on how to use it.
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/csv)
+
+#### Example
 
 ```json
 {
