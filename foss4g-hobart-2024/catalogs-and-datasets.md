@@ -402,11 +402,11 @@ Cesium 3D Tiles can be a `url` to a directory of Cesium Terrain, or an `ionAsset
 }
 ```
 
-### 3D - ArcGis SceneServer
+### 3D - ArcGis SceneServer (I3S)
 
 The ESRI version of 3d-tiles
 
-[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/esri-sceneServer)
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/i3s)
 
 ```json
 {
