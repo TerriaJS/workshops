@@ -15,6 +15,7 @@ This has some limitations, as it doesn't include the TerriaJS-Server component:
 - Make sure you have NodeJS installed
 - Run `npx serve`
   - It will ask you to install `serve` if you don't have it installed - which is a simple NodeJS package to serve static files
+  - Alternatively if you don't have NodeJS installed using python3 `python -m http.server 3000`
 - Go to http://localhost:3000/
 - Can you see a globe? Then you can move on to
   - [Setting up your catalog](catalogs-and-datasets.md)
