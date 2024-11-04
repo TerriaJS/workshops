@@ -2,7 +2,7 @@
 
 If you don't have experience building TerriaJS - or with NodeJS packages - we highly recommend following the "Beginner to Terria" guide.
 
-[Link to workshop presentation]()
+[Link to workshop presentation](https://terriaptyltd-my.sharepoint.com/:p:/g/personal/nick_forbes-smith_terria_io/EVSb_xoA0FNPqnXAFI1qdkwBPVnbSeYwVuiUjrIxVGwBjA?e=bz0wgA)
 
 ## Beginner to Terria
 
