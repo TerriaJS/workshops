@@ -34,4 +34,4 @@ Paste in the following JSON
 - Create a Public Gist
 - Click the "Raw" button
 - Copy URL
-- Go to https://ci.terria.io/main/#clean&___PASTE_URL_HERE___
+- Go to http://ci.terria.io/main/#clean&___PASTE_URL_HERE___
