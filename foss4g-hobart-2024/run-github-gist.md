@@ -32,6 +32,7 @@ Paste in the following JSON
 ```
 
 - Create a Public Gist
+- **Make sure the name ends with `.json`**
 - Click the "Raw" button
 - Copy URL
 - Go to http://ci.terria.io/main/#clean&___PASTE_URL_HERE___
