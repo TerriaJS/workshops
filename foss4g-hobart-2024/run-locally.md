@@ -10,12 +10,11 @@ This has some limitations, as it doesn't include the TerriaJS-Server component:
 ## Guide
 
 - Go to https://github.com/TerriaJS/terriamap-static
-- You can either
-  - Fork the repository (to your own GitHub account)
-  - Clone/download our repository
+- Clone/download our repository
 - Open Terminal in `terriamap-static` folder
 - Make sure you have NodeJS installed
 - Run `npx serve`
+  - It will ask you to install `serve` if you don't have it installed - which is a simple NodeJS package to serve static files
 - Go to http://localhost:3000/
 - Can you see a globe? Then you can move on to
   - [Setting up your catalog](catalogs-and-datasets.md)

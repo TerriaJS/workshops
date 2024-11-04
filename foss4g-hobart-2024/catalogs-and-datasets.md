@@ -8,11 +8,13 @@ By the end of this section of the workshop, you will have a better understanding
 
 **_nb: A lot of the information in this guide is taken directly from [TerriaJS documentation](https://docs.terria.io/guide/connecting-to-data/) This is the best resource for learning about TerriaJS, and we recommend that you refer to it if you get stuck._**
 
-TerriaJS has around 1000 different configuration properties, so it can get complicated. We recommend starting with simple data sources (like Web Map Service and GeoJSON) instead of data sources that require extensive configuration (like CKAN and CSW).
+TerriaJS supports 70 data APIs and file formats, and has around 1000 different configuration properties, so it can get complicated. We recommend starting with simple data sources (like Web Map Service and GeoJSON) instead of data sources that require extensive configuration (like CKAN and CSW).
 
-There are list of examples for different data types in the [TerriaJS documentation](https://docs.terria.io/guide/connecting-to-data/#getting-started)
+There are list of examples for different data types in the [TerriaJS documentation](https://docs.terria.io/guide/connecting-to-data/#getting-started).
 
-The image below shows the catalog for the NationalMap app.
+We also have a [user guide](https://userguide.terria.io/) that explains how to use the TerriaJS application.
+
+#### The image below shows the catalog for the NationalMap app.
 
 ![Alt text](assets/catalog.png)
 
@@ -20,7 +22,7 @@ The image below shows the catalog for the NationalMap app.
 
 If you are trying to load data from a different domain than your TerriaJS application, you may run into issues with Cross-Origin Resource Sharing (CORS). TerriaJS provides a way to work around these issues using a proxy. For more information on how to set up a proxy, please refer to the [TerriaJS documentation on CORS](https://docs.terria.io/guide/connecting-to-data/cross-origin-resource-sharing/).
 
-**Note** if you are using the "pre-built" TerriaMap, you are unable to use the TerriaJS proxy. You will need to setup the full developer environment.
+**Note** if you are using the "pre-built" TerriaMap, you are unable to use the TerriaJS proxy. You will need to setup the full developer environment. If you encounter CORS issues, please let us know and we can help you get setup, or we can find alternative data sources that don't require a proxy.
 
 ## Catalogs
 
@@ -81,53 +83,57 @@ Your catalog can be found in `init/foss4g.json`. You can edit this and then relo
 
 ### Add a basemap
 
-We can configure the basemap in the catalog. The gist below makes use of the [LINZ Ariel Imagery basemap](https://linz.maps.arcgis.com/home/item.html?id=850d6096d89b48228a0638842fa3801c).
-
-```
-https://gist.githubusercontent.com/sixlighthouses/f5e7be45840d2a57746a0b746d96ef6a/raw/59de5d0f91aafeb7cd2fbef968bc985022b8a0ce/foss4g_1.json
-```
-
-```json
-PUT JSON HERE
-```
-
-### Add a WebFeatureServiceGroup
-
-Add the LINZ WFS group to the catalog, as a member of our group
+We can configure the basemap in the catalog. Add the `baseMaps` property to your catalog to get a Tasmanian LIST basemap.
 
 ```json
 {
-  "id": "d1db650c-9372-4eec-8dec-33a0c04744ac",
+  ...
+  "baseMaps": {
+    "defaultBaseMapId": "list-basemap",
+    "previewBaseMapId": "basemap-positron",
+    "enabledBaseMaps": [
+      "basemap-natural-earth-II",
+      "basemap-black-marble",
+      "basemap-positron",
+      "basemap-darkmatter",
+      "list-basemap"
+    ],
+    "items": [
+      {
+        "image": "public/img/tasmania-basemap-icon.png",
+        "item": {
+          "allowFeaturePicking": false,
+          "id": "list-basemap",
+          "name": "LIST Simple Basemap",
+          "opacity": 1,
+          "type": "esri-mapServer",
+          "url": "https://services.thelist.tas.gov.au/arcgis/rest/services/Basemaps/SimpleBasemap/MapServer/0"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Add an ArcGis MapServer layer (ESRI's version of WMS)
+
+Add LIST ArcGis MapServer layer to the catalog, as a member of our group
+
+```json
+{
   "name": "FOSS4G Group",
   "type": "group",
   "members": [
     {
-      "id": "79f3b210-ad14-4b82-8848-beb7fc1fdc2c",
-      "type": "wfs-group",
-      "name": "LINZ Data",
-      "url": "https://data.linz.govt.nz/services;key=397cc93fe1a7433ebf5aa8a7b6ebdc4a/wfs/?service=WFS&request=GetCapabilities"
+      "type": "esri-mapServer",
+      "name": "Tasmanian Heritage Register",
+      "url": "https://services.thelist.tas.gov.au/arcgis/rest/services/HT/HT_Public/MapServer/0"
     }
   ]
 }
 ```
 
 ![Alt text](assets/LINZ.png)
-
-#### Add a layer from a WMS
-
-Single layer : water
-https://gist.githubusercontent.com/sixlighthouses/90a87c873c613938714481047e00159c/raw/8fb31d7e3aba625c396d4f5de3e2f1ed0e24b6d5/foss4g_3.json
-
-```json
-PUT JSON HERE
-```
-
-Two layers : water and slope class
-https://gist.githubusercontent.com/sixlighthouses/90a87c873c613938714481047e00159c/raw/4eff5b4063d5f66c6003ccaf04db0ad1e28b5a0d/foss4g_3.json
-
-```json
-PUT JSON HERE
-```
 
 ### Let's add some of your data
 
@@ -136,6 +142,219 @@ Do you have access to some data your wish to load. Check the documentation and g
 You can get started with different data types [here](https://docs.terria.io/guide/connecting-to-data/)
 
 If you see an interesting dataset on one of our Maps - like NationalMap - let us know and we can share the TerriaJS configuration!
+
+### Intro to some data types
+
+Go to the documentation to see the full list of data types [here](https://docs.terria.io/guide/connecting-to-data/).
+
+These are some of the most common data types you might use:
+
+- [Tabular - CSV](#tabular---csv)
+- [Vector - GeoJSON](#vector---geojson)
+- [Vector - Shapefile](#vector---shapefile)
+- [Vector - Web Feature Service (WFS)](#vector---web-feature-service-wfs)
+- [Vector - ArcGis FeatureServer](#vector---arcgis-featureserver)
+- [Imagery - Web Map Service (WMS)](#imagery---web-map-service-wms)
+- [Imagery - ArcGis MapServer](#imagery---arcgis-mapserver)
+- [Imagery - ArcGis ImageServer](#imagery---arcgis-imageserver)
+- [Raster - Cloud optimized GeoTIFF (COG)](#raster---cloud-optimized-geotiff-cog)
+- [3D - Cesium 3D Tiles](#3d---cesium-3d-tiles)
+- [3D - Cesium 3D Terrain](#3d---cesium-3d-terrain)
+- [3D - ArcGis SceneServer](#3d---arcgis-sceneserver)
+
+### Tabular - CSV
+
+For what CSVs are supported - see [csv-geo-au](https://github.com/NICTA/nationalmap/wiki/csv-geo-au). Tabular data in Terria is very customisable, and can be difficult. We have an "Edit Style" tool to help with this - see [Style Editor in the user guide](https://userguide.terria.io/interactions-functionalities-and-workflows#style-editor) and [this discussion post](https://github.com/TerriaJS/terriajs/discussions/6422#discussioncomment-3176804) on how to use it.
+
+```json
+{
+  "type": "csv",
+  "url": "https://tiles.terria.io/static/auspost-locations.csv",
+  "name": "Australia Post Locations",
+  "id": "some unique ID"
+}
+```
+
+### Vector - GeoJSON
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/geojson)
+
+Terria has support for a limited number of CRSs, but GeoJSON _should_ be WGS84 (EPSG:4326).
+
+#### Example
+
+```json
+{
+  "type": "geojson",
+  "url": "https://tiles.terria.io/terriajs-examples/geojson/bike_racks.geojson",
+  "name": "geojson example"
+}
+```
+
+### Vector - Shapefile
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/shp)
+
+Shapefile must be zipped (can include `shp`, `dbf`, `prj`, and `cpg` properties)
+
+```json
+{
+  "type": "shp",
+  "name": "shp (shapefile) example",
+  "url": "https://tiles.terria.io/terriajs-examples/shp/airports.zip"
+}
+```
+
+### Vector - Web Feature Service (WFS)
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/wfs)
+
+**Note** there is a feature limit of 1000. This can be adjusted using the `maxFeatures` property.
+
+```json
+{
+  "type": "wfs",
+  "name": "wfs example",
+  "url": "https://warehouse.ausseabed.gov.au/geoserver/ows",
+  "typeNames": "ausseabed:AHO_Reference_Surface__Broome__2023_0_5m_L0_Coverage"
+}
+```
+
+### Vector - ArcGis FeatureServer
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/esri-featureServer)
+
+**Note** there is a feature limit of 5000. This can be adjusted using the `maxFeatures` property.
+
+```json
+{
+  "url": "https://services5.arcgis.com/OvOcYIrJnM97ABBA/ArcGIS/rest/services/Public_Hospitals_2021_22/FeatureServer/3",
+  "type": "esri-featureServer",
+  "name": "Australian Public Hospitals"
+}
+```
+
+### Imagery - Web Map Service (WMS)
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/wms)
+
+**Note** Web Mercator (EPSG:3857) and WGS84 (EPSG:4326) image tiles are supported.
+
+```json
+{
+  "type": "wms",
+  "name": "Mangrove Cover",
+  "url": "https://ows.services.dea.ga.gov.au",
+  "layers": "ga_ls_mangrove_cover_cyear_3"
+}
+```
+
+### Imagery - ArcGis MapServer
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/esri-mapServer)
+
+**Note** Web Mercator (EPSG:3857) and WGS84 (EPSG:4326) image tiles are supported.
+
+```json
+{
+  "url": "https://services.ga.gov.au/gis/rest/services/GA_Surface_Geology/MapServer",
+  "type": "esri-mapServer",
+  "name": "Surface Geology"
+}
+```
+
+### Imagery - ArcGis ImageServer
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/esri-imageServer)
+
+**Note** Web Mercator (EPSG:3857) and WGS84 (EPSG:4326) image tiles are supported.
+
+```json
+{
+  "url": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/CharlotteLAS/ImageServer",
+  "type": "esri-imageServer",
+  "name": "CharlotteLAS"
+}
+```
+
+### Raster - Cloud optimized GeoTIFF (COG)
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/cog)
+
+**Note** Web Mercator (EPSG:3857) and WGS84 (EPSG:4326) rasters are supported, we have experimental support for reprojection, but expect issues!
+
+```json
+{
+  "name": "COG Test Uluru",
+  "type": "cog",
+  "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/52/J/FS/2023/5/S2A_52JFS_20230501_0_L2A/TCI.tif"
+}
+```
+
+### 3D - Cesium 3D Tiles
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/3d-tiles)
+
+Cesium 3D Tiles can be a `url` to a 3d-tiles JSON file, or an `ionAssetId` to a Cesium Ion asset.
+
+- Cesium Ion can be used to host and transform a variety of 3D formats - including 3D Models (OBJ, FBX, ...), Point Clouds (LAS, XYZ) and Terrain (GeoTIFF, ASCII Image)
+- You can also set the `ionAccessToken` property to grant access to your Cesium Ion assets.
+
+#### `ionAssetId`
+
+Note, this requires a Cesium Ion access token to be set in the `ionAccessToken` property.
+
+```json
+{
+  "type": "3d-tiles",
+  "ionAssetId": 96188,
+  "ionAccessToken": "your-token-here",
+  "name": "Cesium OSM Buildings"
+}
+```
+
+#### `url`
+
+```json
+{
+  "type": "3d-tiles",
+  "url": "https://tiles.terria.io/3d-tiles/photomesh/melbourne/tileset.json",
+  "name": "CoM Melbourne 3D Photo Mesh"
+}
+```
+
+### 3D - Cesium 3D Terrain
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/cesium-terrain)
+
+Cesium 3D Tiles can be a `url` to a directory of Cesium Terrain, or an `ionAssetId` to a Cesium Ion asset.
+
+- You can also set the `ionAccessToken` property to grant access to your Cesium Ion assets.
+
+#### `ionAssetId`
+
+```json
+{
+  "type": "cesium-terrain",
+  "ionAccessToken": "your-token-here",
+  "ionAssetId": 1,
+  "name": "Cesium World Terrain"
+}
+```
+
+### 3D - ArcGis SceneServer
+
+The ESRI version of 3d-tiles
+
+[Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/esri-sceneServer)
+
+```json
+{
+  "type": "i3s",
+  "name": "NYC Buildings",
+  "url": "https://tiles.arcgis.com/tiles/z2tnIkrLQ2BRzr6P/arcgis/rest/services/NYC_Attributed_v17/SceneServer"
+}
+```
 
 ### Advanced options
 
