@@ -7,6 +7,7 @@ If you don't have experience building TerriaJS - or with NodeJS packages - we hi
 ## Beginner to Terria
 
 - [Setup your (static) TerriaMap](run-locally.md)
+  - [Use GitHub Gist to create a catalog](run-github-gist.md)
 - [Setting up your catalog](catalogs-and-datasets.md)
 - [Theming (JSON based)](theming-json-based.md)
 - [Deploy to GitHub pages](deploy-to-github-pages.md)
