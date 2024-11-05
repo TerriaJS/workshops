@@ -368,7 +368,7 @@ Note, this requires a Cesium Ion access token to be set in the `ionAccessToken` 
 {
   "type": "3d-tiles",
   "ionAssetId": 96188,
-  "ionAccessToken": "your-token-here",
+  "ionAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0",
   "name": "Cesium OSM Buildings"
 }
 ```
@@ -396,7 +396,7 @@ Cesium 3D Tiles can be a `url` to a directory of Cesium Terrain, or an `ionAsset
 ```json
 {
   "type": "cesium-terrain",
-  "ionAccessToken": "your-token-here",
+  "ionAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0",
   "ionAssetId": 1,
   "name": "Cesium World Terrain"
 }
@@ -419,3 +419,20 @@ The ESRI version of 3d-tiles
 ### Advanced options
 
 TerriaJS catalogs have many other configuration options. You can find them in the [TerriaJS Init Source Documentation](...asdfasdf)
+
+### Temporary Cesium Ion code
+
+```json
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0
+```
+
+Test catalog item
+
+```json
+{
+  "type": "3d-tiles",
+  "ionAssetId": 96188,
+  "ionAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0",
+  "name": "Cesium OSM Buildings"
+}
+```
