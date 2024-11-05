@@ -426,7 +426,7 @@ TerriaJS catalogs have many other configuration options. You can find them in th
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0
 ```
 
-Test catalog item
+#### Test catalog item
 
 ```json
 {
@@ -435,4 +435,15 @@ Test catalog item
   "ionAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0",
   "name": "Cesium OSM Buildings"
 }
+```
+
+#### Get your Terrain working!
+
+Edit `config.json` file - add to `parameters` object
+
+```json
+{
+  "parameters": {
+    ...,
+    "cesiumIonAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0",
 ```
