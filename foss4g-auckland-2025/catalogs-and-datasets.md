@@ -167,7 +167,7 @@ Add the "Auckland Notable Trees" ArcGis FeatureServer layer to the catalog, as a
 
 ### Add terrain
 
-We can turn on the global terrain layer by updating the `viewerMode` property. This uses Cesium Ion terrain, which requires an API key. However, we have already set one up for this workshop.
+We can turn on the global terrain layer by default by updating the `viewerMode` property. This uses Cesium Ion terrain, which requires an API key. However, we have already set one up for this workshop.
 
 ```json
 ...
