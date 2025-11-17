@@ -82,7 +82,7 @@ Your catalog can be found in `init/foss4g.json`. You can edit this and then relo
 
 ### Add a basemap
 
-We can configure the basemap in the catalog. Update the `baseMaps` property in your catalog to get a Tasmanian LIST basemap.
+We can configure the basemap in the catalog. Update the `baseMaps` property in your catalog to get a NZ basemap from LINZ.
 
 ```json
 {
@@ -147,9 +147,9 @@ We can configure the basemap in the catalog. Update the `baseMaps` property in y
 
 ### Add a new dataset!
 
-Here we are going to add an ArcGis MapServer layer (ESRI's version of WMS) from Land Information System Tasmania (LIST). The layer contains the Tasmanian Heritage Register.
+Here we are going to add an ArcGis FeatureServer layer (ESRI's version of OGC Web Feature Service (WFS)) from Auckland Council. The layer contains the Auckland Notable Trees.
 
-Add the "Tasmanian Heritage Register" LIST ArcGis MapServer layer to the catalog, as a member of our "FOSS4G group"
+Add the "Auckland Notable Trees" ArcGis FeatureServer layer to the catalog, as a member of our "FOSS4G group"
 
 ```json
 {
@@ -157,15 +157,15 @@ Add the "Tasmanian Heritage Register" LIST ArcGis MapServer layer to the catalog
   "type": "group",
   "members": [
     {
-      "type": "esri-mapServer",
-      "name": "Tasmanian Heritage Register",
-      "url": "https://services.thelist.tas.gov.au/arcgis/rest/services/HT/HT_Public/MapServer/0"
+      "type": "esri-featureServer",
+      "name": "Auckland Notable Trees",
+      "url": "https://services1.arcgis.com/n4yPwebTjJCmXB6W/arcgis/rest/services/Notable_Trees_Overlay/FeatureServer/0"
     }
   ]
 }
 ```
 
-### The catalog file with LIST basemap and Tasmanian Heritage Register
+### The catalog file with LINZ basemaps and Auckland Notable Trees
 
 This is what your catalog should look like now
 
@@ -183,35 +183,66 @@ This is what your catalog should look like now
       "type": "group",
       "members": [
         {
-          "type": "esri-mapServer",
-          "name": "Tasmanian Heritage Register",
-          "url": "https://services.thelist.tas.gov.au/arcgis/rest/services/HT/HT_Public/MapServer/0"
+          "type": "esri-featureServer",
+          "name": "Auckland Notable Trees",
+          "url": "https://services1.arcgis.com/n4yPwebTjJCmXB6W/arcgis/rest/services/Notable_Trees_Overlay/FeatureServer/0"
         }
       ]
     }
   ],
   "viewerMode": "3dSmooth",
   "baseMaps": {
-    "defaultBaseMapId": "list-basemap",
+    "defaultBaseMapId": "new-zealand-aerial",
     "previewBaseMapId": "basemap-openstreetmap",
     "enabledBaseMaps": [
-      "basemap-natural-earth-II",
-      "basemap-black-marble",
+      "new-zealand-aerial",
+      "new-zealand-topographic",
+      "new-zealand-composite-basemap",
       "basemap-openstreetmap",
-      "basemap-darkmatter",
-      "list-basemap"
+      "basemap-natural-earth-II"
     ],
     "items": [
       {
-        "image": "public/img/tasmania-basemap-icon.png",
+        "image": "images/basemaps/foss4g.png",
         "item": {
           "allowFeaturePicking": false,
-          "id": "list-basemap",
-          "name": "LIST Simple Basemap",
+          "id": "new-zealand-topographic",
+          "name": "New Zealand Topographic",
           "opacity": 1,
-          "type": "esri-mapServer",
-          "url": "https://services.thelist.tas.gov.au/arcgis/rest/services/Basemaps/SimpleBasemap/MapServer/0"
+          "type": "url-template-imagery",
+          "url": "https://basemaps.linz.govt.nz/v1/tiles/topo-raster-gridded/WebMercatorQuad/{z}/{x}/{y}.webp?api=d01k2zz4b5n8d4yjf3vy52s7ybv"
         }
+      },
+      {
+        "image": "images/basemaps/foss4g.png",
+        "item": {
+          "allowFeaturePicking": false,
+          "id": "new-zealand-aerial",
+          "name": "New Zealand Aerial",
+          "opacity": 1,
+          "type": "url-template-imagery",
+          "url": "https://basemaps.linz.govt.nz/v1/tiles/aerial/WebMercatorQuad/{z}/{x}/{y}.webp?api=d01k2zz4b5n8d4yjf3vy52s7ybv"
+        }
+      },
+      {
+        "image": "images/basemaps/foss4g.png",
+        "item": {
+          "allowFeaturePicking": false,
+          "id": "new-zealand-igor-hillshade",
+          "name": "New Zealand Igor Hillshade",
+          "opacity": 0.5,
+          "type": "url-template-imagery",
+          "url": "https://basemaps.linz.govt.nz/v1/tiles/hillshade-igor/WebMercatorQuad/{z}/{x}/{y}.webp?api=d01k2zz4b5n8d4yjf3vy52s7ybv"
+        }
+      },
+      {
+        "item": {
+          "id": "new-zealand-composite-basemap",
+          "name": "OSM + NZ Hillshade Composite",
+          "type": "composite",
+          "members": ["new-zealand-igor-hillshade", "basemap-openstreetmap"]
+        },
+        "image": "images/basemaps/foss4g.png"
       }
     ]
   }
@@ -226,7 +257,7 @@ Do you have access to some data your wish to load. Check the documentation and g
 
 You can get started with different data types [here](https://docs.terria.io/guide/connecting-to-data/)
 
-If you see an interesting dataset on one of our Maps - like NationalMap - let us know and we can share the TerriaJS configuration!
+If you see an interesting dataset on one of our Maps - like the Demo Map - let us know and we can share the TerriaJS configuration!
 
 ### Intro to some data types
 
@@ -282,6 +313,18 @@ Terria has support for a limited number of CRSs, but GeoJSON _should_ be WGS84 (
 }
 ```
 
+#### Adding local data
+
+You can also add a local GeoJSON file to your TerriaMap folder, and then reference it in your catalog.
+
+```json
+{
+  "type": "geojson",
+  "url": "test/bike_racks.geojson",
+  "name": "Bike Racks (local GeoJSON)"
+}
+```
+
 ### Vector - Shapefile
 
 [Documentation](https://docs.terria.io/guide/connecting-to-data/catalog-type-details/shp)
@@ -306,8 +349,8 @@ Shapefile must be zipped (can include `shp`, `dbf`, `prj`, and `cpg` properties)
 {
   "type": "wfs",
   "name": "wfs example",
-  "url": "https://warehouse.ausseabed.gov.au/geoserver/ows",
-  "typeNames": "ausseabed:AHO_Reference_Surface__Broome__2023_0_5m_L0_Coverage"
+  "url": "https://opendata.maps.vic.gov.au/geoserver/wfs",
+  "typeNames": "open-data-platform:basin100"
 }
 ```
 
@@ -319,9 +362,9 @@ Shapefile must be zipped (can include `shp`, `dbf`, `prj`, and `cpg` properties)
 
 ```json
 {
-  "url": "https://services5.arcgis.com/OvOcYIrJnM97ABBA/ArcGIS/rest/services/Public_Hospitals_2021_22/FeatureServer/3",
+  "url": "https://services1.arcgis.com/n4yPwebTjJCmXB6W/arcgis/rest/services/Stormwater_Watercourse/FeatureServer/0",
   "type": "esri-featureServer",
-  "name": "Australian Public Hospitals"
+  "name": "Auckland Stormwater Watercourses"
 }
 ```
 
@@ -362,9 +405,15 @@ Shapefile must be zipped (can include `shp`, `dbf`, `prj`, and `cpg` properties)
 
 ```json
 {
-  "url": "https://sampleserver6.arcgisonline.com/arcgis/rest/services/CharlotteLAS/ImageServer",
+  "url": "https://www.lmbc.nsw.gov.au/arcgis/rest/services/NVR/SensitiveRegulatedLand/ImageServer",
   "type": "esri-imageServer",
-  "name": "CharlotteLAS"
+  "name": "NSW Sensitive Regulated Land",
+  "rectangle": {
+    "west": 139.36,
+    "south": -39.4,
+    "east": 151.2,
+    "north": -33.55
+  }
 }
 ```
 
