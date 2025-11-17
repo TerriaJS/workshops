@@ -448,7 +448,7 @@ Note, this requires a Cesium Ion access token to be set in the `ionAccessToken` 
 {
   "type": "3d-tiles",
   "ionAssetId": 96188,
-  "ionAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0",
+  "ionAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2MTEyZmRjYy05OTBmLTQ3OGUtOGVjMi0wNDIzYTAwMjMxNWEiLCJpZCI6MzEyNjY0LCJpYXQiOjE3NjMzNDQ4NzF9.sKMeu-ABGmwjp26dLzYQGEkaf26aO6xlQn-qJ1ClRIM",
   "name": "Cesium OSM Buildings"
 }
 ```
@@ -476,7 +476,7 @@ Cesium 3D Tiles can be a `url` to a directory of Cesium Terrain, or an `ionAsset
 ```json
 {
   "type": "cesium-terrain",
-  "ionAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0",
+  "ionAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2MTEyZmRjYy05OTBmLTQ3OGUtOGVjMi0wNDIzYTAwMjMxNWEiLCJpZCI6MzEyNjY0LCJpYXQiOjE3NjMzNDQ4NzF9.sKMeu-ABGmwjp26dLzYQGEkaf26aO6xlQn-qJ1ClRIM",
   "ionAssetId": 1,
   "name": "Cesium World Terrain"
 }
@@ -503,7 +503,7 @@ TerriaJS catalogs have many other configuration options. You can find them in th
 ### Temporary Cesium Ion code
 
 ```json
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2MTEyZmRjYy05OTBmLTQ3OGUtOGVjMi0wNDIzYTAwMjMxNWEiLCJpZCI6MzEyNjY0LCJpYXQiOjE3NjMzNDQ4NzF9.sKMeu-ABGmwjp26dLzYQGEkaf26aO6xlQn-qJ1ClRIM
 ```
 
 #### Test catalog item
@@ -512,7 +512,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1
 {
   "type": "3d-tiles",
   "ionAssetId": 96188,
-  "ionAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0",
+  "ionAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2MTEyZmRjYy05OTBmLTQ3OGUtOGVjMi0wNDIzYTAwMjMxNWEiLCJpZCI6MzEyNjY0LCJpYXQiOjE3NjMzNDQ4NzF9.sKMeu-ABGmwjp26dLzYQGEkaf26aO6xlQn-qJ1ClRIM",
   "name": "Cesium OSM Buildings"
 }
 ```
@@ -525,5 +525,5 @@ Edit `config.json` file - add to `parameters` object
 {
   "parameters": {
     ...,
-    "cesiumIonAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlM2MxODAwNC1mZmY3LTRkNzQtYmE4YS1hMGQzODhhNjQ3OTkiLCJpZCI6MjUyMzkzLCJpYXQiOjE3MzA1NDYxODl9.6ofnHtsKouZs8RU45MbtxuWLI38WcbIDK3sJHKDhwR0",
+    "cesiumIonAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2MTEyZmRjYy05OTBmLTQ3OGUtOGVjMi0wNDIzYTAwMjMxNWEiLCJpZCI6MzEyNjY0LCJpYXQiOjE3NjMzNDQ4NzF9.sKMeu-ABGmwjp26dLzYQGEkaf26aO6xlQn-qJ1ClRIM",
 ```
