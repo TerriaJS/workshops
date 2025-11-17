@@ -88,27 +88,58 @@ We can configure the basemap in the catalog. Update the `baseMaps` property in y
 {
   ...
   "baseMaps": {
-    "defaultBaseMapId": "list-basemap",
+    "defaultBaseMapId": "new-zealand-aerial",
     "previewBaseMapId": "basemap-openstreetmap",
     "enabledBaseMaps": [
-      "basemap-natural-earth-II",
-      "basemap-black-marble",
+      "new-zealand-aerial",
+      "new-zealand-topographic",
+      "new-zealand-composite-basemap",
       "basemap-openstreetmap",
-      "basemap-darkmatter",
-      "list-basemap"
+      "basemap-natural-earth-II"
     ],
     "items": [
       {
-        "image": "public/img/tasmania-basemap-icon.png",
+        "image": "images/basemaps/foss4g.png",
         "item": {
           "allowFeaturePicking": false,
-          "id": "list-basemap",
-          "name": "LIST Simple Basemap",
+          "id": "new-zealand-topographic",
+          "name": "New Zealand Topographic",
           "opacity": 1,
-          "type": "esri-mapServer",
-          "url": "https://services.thelist.tas.gov.au/arcgis/rest/services/Basemaps/SimpleBasemap/MapServer/0"
+          "type": "url-template-imagery",
+          "url": "https://basemaps.linz.govt.nz/v1/tiles/topo-raster-gridded/WebMercatorQuad/{z}/{x}/{y}.webp?api=d01k2zz4b5n8d4yjf3vy52s7ybv"
         }
-      }
+      },
+      {
+        "image": "images/basemaps/foss4g.png",
+        "item": {
+          "allowFeaturePicking": false,
+          "id": "new-zealand-aerial",
+          "name": "New Zealand Aerial",
+          "opacity": 1,
+          "type": "url-template-imagery",
+          "url": "https://basemaps.linz.govt.nz/v1/tiles/aerial/WebMercatorQuad/{z}/{x}/{y}.webp?api=d01k2zz4b5n8d4yjf3vy52s7ybv"
+        }
+      },
+      {
+        "image": "images/basemaps/foss4g.png",
+        "item": {
+          "allowFeaturePicking": false,
+          "id": "new-zealand-igor-hillshade",
+          "name": "New Zealand Igor Hillshade",
+          "opacity": 0.5,
+          "type": "url-template-imagery",
+          "url": "https://basemaps.linz.govt.nz/v1/tiles/hillshade-igor/WebMercatorQuad/{z}/{x}/{y}.webp?api=d01k2zz4b5n8d4yjf3vy52s7ybv"
+        }
+      },
+      {
+      "item": {
+        "id": "new-zealand-composite-basemap",
+        "name": "OSM + NZ Hillshade Composite",
+        "type": "composite",
+        "members": ["new-zealand-igor-hillshade", "basemap-openstreetmap"]
+      },
+      "image": "images/basemaps/foss4g.png"
+    }
     ]
   }
 }
