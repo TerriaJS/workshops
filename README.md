@@ -2,7 +2,7 @@
 
 Repository for workshop materials
 
-## 🌏 [FOSS4G Auckland 2025: Build your own TerriaMap](https://github.com/TerriaJS/workshops/tree/main/foss4g-auckland-2025/build-your-own-terriamap)
+## 🌏 [FOSS4G Auckland 2025: Build your own TerriaMap](https://github.com/TerriaJS/workshops/blob/main/foss4g-auckland-2025/README.md)
 
 ### Past workshops
 
