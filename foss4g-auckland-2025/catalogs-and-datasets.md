@@ -141,10 +141,10 @@ This is what your catalog should look like now
 ```json
 {
   "homeCamera": {
-    "north": -35,
-    "east": 152,
-    "south": -47,
-    "west": 140
+    "east": 174.8,
+    "west": 174.7,
+    "north": -36.8,
+    "south": -36.9
   },
   "catalog": [
     {
