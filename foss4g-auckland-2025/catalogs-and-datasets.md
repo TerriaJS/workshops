@@ -70,7 +70,7 @@ A very minimal example - this defines
       "type": "group"
     }
   ],
-  "viewerMode": "3d",
+  "viewerMode": "3dSmooth",
   "baseMaps": {
     "defaultBaseMapId": "basemap-openstreetmap",
     "previewBaseMapId": "basemap-openstreetmap"
@@ -82,7 +82,7 @@ Your catalog can be found in `init/foss4g.json`. You can edit this and then relo
 
 ### Add a basemap
 
-We can configure the basemap in the catalog. Update the `baseMaps` property in your catalog to get a NZ basemap from LINZ.
+We can configure the basemap in the catalog. Update the `baseMaps` property in your catalog to get NZ basemaps from [LINZ](https://www.linz.govt.nz/products-services/data/linz-basemaps). This example includes topographic, aerial, and hillshade layers. The hillshade layer is composed on top of an Open Street Map layer using the `composite` data type.
 
 ```json
 {
@@ -165,6 +165,16 @@ Add the "Auckland Notable Trees" ArcGis FeatureServer layer to the catalog, as a
 }
 ```
 
+### Add terrain
+
+We can turn on the global terrain layer by updating the `viewerMode` property. This uses Cesium Ion terrain, which requires an API key. However, we have already set one up for this workshop.
+
+```json
+...
+"viewerMode": "3d",
+...
+```
+
 ### The catalog file with LINZ basemaps and Auckland Notable Trees
 
 This is what your catalog should look like now
@@ -190,7 +200,7 @@ This is what your catalog should look like now
       ]
     }
   ],
-  "viewerMode": "3dSmooth",
+  "viewerMode": "3d",
   "baseMaps": {
     "defaultBaseMapId": "new-zealand-aerial",
     "previewBaseMapId": "basemap-openstreetmap",
