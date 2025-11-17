@@ -70,7 +70,7 @@ A very minimal example - this defines
       "type": "group"
     }
   ],
-  "viewerMode": "3dSmooth",
+  "viewerMode": "3d",
   "baseMaps": {
     "defaultBaseMapId": "basemap-openstreetmap",
     "previewBaseMapId": "basemap-openstreetmap"
