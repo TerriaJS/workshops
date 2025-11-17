@@ -52,17 +52,17 @@ Each catalog file:
 A very minimal example - this defines
 
 - a group called "FOSS4G Group" with no members
-- a default basemap of "basemap-positron" - a nice simple light basemap
-- a home camera position framing beautiful Tasmania
+- a default basemap of "basemap-openstreetmap" - a nice simple OpenStreetMap basemap
+- a home camera position framing beautiful Auckland
 - the default viewer mode to `3dSmooth` - which is Cesium without Terrain (a smooth globe)
 
 ```json
 {
   "homeCamera": {
-    "north": -34,
-    "east": 178,
-    "south": -49,
-    "west": 166
+    "east": 174.8,
+    "west": 174.7,
+    "north": -36.8,
+    "south": -36.9
   },
   "catalog": [
     {
@@ -72,8 +72,8 @@ A very minimal example - this defines
   ],
   "viewerMode": "3dSmooth",
   "baseMaps": {
-    "defaultBaseMapId": "basemap-positron",
-    "previewBaseMapId": "basemap-positron"
+    "defaultBaseMapId": "basemap-openstreetmap",
+    "previewBaseMapId": "basemap-openstreetmap"
   }
 }
 ```
@@ -89,11 +89,11 @@ We can configure the basemap in the catalog. Update the `baseMaps` property in y
   ...
   "baseMaps": {
     "defaultBaseMapId": "list-basemap",
-    "previewBaseMapId": "basemap-positron",
+    "previewBaseMapId": "basemap-openstreetmap",
     "enabledBaseMaps": [
       "basemap-natural-earth-II",
       "basemap-black-marble",
-      "basemap-positron",
+      "basemap-openstreetmap",
       "basemap-darkmatter",
       "list-basemap"
     ],
@@ -162,11 +162,11 @@ This is what your catalog should look like now
   "viewerMode": "3dSmooth",
   "baseMaps": {
     "defaultBaseMapId": "list-basemap",
-    "previewBaseMapId": "basemap-positron",
+    "previewBaseMapId": "basemap-openstreetmap",
     "enabledBaseMaps": [
       "basemap-natural-earth-II",
       "basemap-black-marble",
-      "basemap-positron",
+      "basemap-openstreetmap",
       "basemap-darkmatter",
       "list-basemap"
     ],
