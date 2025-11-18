@@ -15,7 +15,7 @@ If you want to change the configuration, you will need to setup a local TerriaMa
 
 - Go to http://ci.terria.io/fix-georef-tiles/#clean
   - The `#clean` will clear the current catalog
-- Drag your `foss4g.json` file onto the page
+- Drag your `foss4g.json` file onto the page ([Download this file here](https://github.com/TerriaJS/terriamap-static/blob/main/init/foss4g.json))
 - You should see the catalog appear on the map
 - **Note** to update your catalog, you will need to reload the page, and drag the file again
 
